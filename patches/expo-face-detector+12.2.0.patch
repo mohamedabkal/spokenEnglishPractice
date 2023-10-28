@@ -1,0 +1,24 @@
+diff --git a/node_modules/expo-face-detector/android/src/main/java/expo/modules/facedetector/FaceDetectorUtils.kt b/node_modules/expo-face-detector/android/src/main/java/expo/modules/facedetector/FaceDetectorUtils.kt
+index 053164f..8253809 100644
+--- a/node_modules/expo-face-detector/android/src/main/java/expo/modules/facedetector/FaceDetectorUtils.kt
++++ b/node_modules/expo-face-detector/android/src/main/java/expo/modules/facedetector/FaceDetectorUtils.kt
+@@ -13,6 +13,7 @@ object FaceDetectorUtils {
+       face.trackingId?.let { putInt("faceID", it) }
+       putDouble("rollAngle", face.headEulerAngleZ.toDouble())
+       putDouble("yawAngle", face.headEulerAngleY.toDouble())
++      putDouble("pitchAngle", face.headEulerAngleX.toDouble())
+ 
+       face.smilingProbability?.let {
+         if (it >= 0) {
+diff --git a/node_modules/expo-face-detector/src/FaceDetector.ts b/node_modules/expo-face-detector/src/FaceDetector.ts
+index c571bcb..ed16d6c 100644
+--- a/node_modules/expo-face-detector/src/FaceDetector.ts
++++ b/node_modules/expo-face-detector/src/FaceDetector.ts
+@@ -96,6 +96,7 @@ export type FaceFeature = {
+    * have the same `faceID`).
+    */
+   faceID?: number;
++  pitchAngle?: number;
+ };
+ 
+ // @needsAudit
